@@ -97,11 +97,6 @@ vi lex_prev_perm(const vi cur_perm, int prev_num) {
     return prev_perm;
 }
 
-void print_perm(vi perm) {
-    for (auto i : perm) cout << ' ' << i;
-    cout << endl;
-}
-
 void lex_test() {
     int init[8] = {8, 3, 6, 7, 4, 5, 2, 1}; // 7 * 7! + 2 * 6! + 4 * 5! + 4 * 4! + 2 * 3! + 2 * 2! + 1 * 1!
     vi vinit(8);
