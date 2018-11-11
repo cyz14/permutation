@@ -41,6 +41,13 @@ permutation 用法：permutation **num** < init.txt
 ```
 
 ## 测试
+
+算法运行效率测试对比
+```
+make time_test
+```
+
+算法正确性测试
 ```
 make test
 ```
