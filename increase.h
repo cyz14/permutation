@@ -99,9 +99,7 @@ vi inc_mid_minus_mid(vi mid, vi op) {
 
 vi inc_mid2perm(vi mid) {
     vi perm(mid.size()+1, 0); // 0, 1, ..., mid.size()
-    for (int i = perm.size();
-        i > 1;
-        --i) {
+    for (int i = perm.size(); i > 1; --i) {
         int pos, num_space;
         pos = perm.size()-1, num_space = 0;
         for (; pos >= 0 && num_space < mid[i-2]; pos--) {
