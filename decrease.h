@@ -30,12 +30,14 @@ vi dec_perm2mid(vi perm) {
 
 vi dec_num2mid(int size, int num) {
     vi ret;
+    int ss = size;
     // stores order: a_n, a_(n-1), ..., a2
     while (num && size > 0) {
         ret.push_back(num % size);
         num /= size;
         size--;
     }
+    while (ret.size() < ss-1) ret.push_back(0);
     return ret;
 }
 
@@ -114,7 +116,6 @@ vi dec_mid2perm(vi mid) {
     return perm;
 }
 
-// todo
 vi dec_prev_perm(vi init, int prev_num) {
     vi mid = dec_perm2mid(init);
     int num = dec_mid2num(mid);
@@ -122,6 +123,15 @@ vi dec_prev_perm(vi init, int prev_num) {
     vi prev_num2mid = dec_num2mid(init.size(), num);
     vi prev_perm = dec_mid2perm(prev_num2mid);
     return prev_perm;
+}
+
+vi dec_next_perm(vi init) {
+    vi mid = dec_perm2mid(init);
+    int num = dec_mid2num(mid);
+    num++;
+    vi next_num2mid = dec_num2mid(init.size(), num);
+    vi next_perm = dec_mid2perm(next_num2mid);
+    return next_perm;
 }
 
 void dec_test() {

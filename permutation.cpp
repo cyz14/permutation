@@ -14,11 +14,6 @@ typedef long long ll;
 typedef vector<int> vi;
 int fact[10] = {1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880};
 
-void print_perm(vi perm) {
-    for (auto i : perm) cout << ' ' << i;
-    cout << endl;
-}
-
 void usage() {
     printf("Usage: ./permutation [prev_number]\n"
            "    input: size p_1, p_2, ..., p_size\n"

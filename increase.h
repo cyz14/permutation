@@ -37,6 +37,7 @@ vi inc_num2mid(int size, int num) {
         num -= d * fact[k];
         k--; // k >= 1 because fact[1] = 1
     }
+    while (ret.size() < size-1) ret.push_back(0);
     // stores order: a2, a3, ..., an
     std::reverse(ret.begin(), ret.end());
     return ret;
@@ -124,6 +125,15 @@ vi inc_prev_perm(vi init, int prev_num) {
     vi prev_num2mid = inc_num2mid(init.size(), num);
     vi prev_perm = inc_mid2perm(prev_num2mid);
     return prev_perm;
+}
+
+vi inc_next_perm(vi init) {
+    vi mid = inc_perm2mid(init);
+    int num = inc_mid2num(mid);
+    num++;
+    vi next_num2mid = inc_num2mid(init.size(), num);
+    vi next_perm = inc_mid2perm(next_num2mid);
+    return next_perm;
 }
 
 void inc_test() {

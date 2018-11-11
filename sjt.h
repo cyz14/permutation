@@ -51,7 +51,7 @@ vi sjt_perm2mid(vi perm, vi &dir) {
     }
     // stores a_n, a_(n-1), ..., a2
     std::reverse(mid.begin(), mid.end());
-    mid.resize(size-1);
+    // mid.resize(size-1);
     return mid;
 }
 
@@ -67,11 +67,18 @@ int sjt_mid2num(vi mid) {
 
 vi  sjt_num2mid(int size, int num) {
     vi ret;
+    int ss = size;
     // stores order: a_n, a_(n-1), ..., a2
     while (num && size > 0) {
         ret.push_back(num % size);
         num /= size;
         size--;
+    }
+    while (ret.size() < ss-1) ret.push_back(0);
+    ret.resize(ss-1);
+    if (ret.size() != ss-1) {
+        cout << "Ret size wrong:";
+        print_perm(ret);
     }
     return ret;
 }
@@ -127,6 +134,16 @@ vi  sjt_prev_perm(vi perm, int prev_num) {
     mid = sjt_num2mid(size, num);
     vi prev = sjt_mid2perm(mid, dir);
     return prev;
+}
+
+vi sjt_next_perm(vi init) {
+    vi dir(init.size()+1, 0);
+    vi mid = sjt_perm2mid(init, dir);
+    int num = sjt_mid2num(mid);
+    num++;
+    vi next_num2mid = sjt_num2mid(init.size(), num);
+    vi next_perm = sjt_mid2perm(next_num2mid, dir);
+    return next_perm;
 }
 
 void sjt_test() {

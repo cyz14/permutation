@@ -14,6 +14,11 @@ typedef vector<int> vi;
 extern int fact[];
 extern void print_perm(vi);
 
+void print_perm(vi perm) {
+    for (auto i : perm) cout << ' ' << i;
+    cout << endl;
+}
+
 int lex_perm2num(const vi& perm) {
     int ret = 0;
     int n = perm.size();
@@ -95,6 +100,14 @@ vi lex_prev_perm(const vi cur_perm, int prev_num) {
     vi prev_mid = lex_num2mid(cur_perm.size(), num);
     vi prev_perm = lex_mid2perm(prev_mid);
     return prev_perm;
+}
+
+vi lex_next_perm(const vi cur_perm) {
+    int num = lex_perm2num(cur_perm);
+    num++;
+    vi next_mid = lex_num2mid(cur_perm.size(), num);
+    vi next_perm = lex_mid2perm(next_mid);
+    return next_perm;
 }
 
 void lex_test() {
